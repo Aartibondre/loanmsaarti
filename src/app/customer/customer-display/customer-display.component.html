@@ -1,0 +1,96 @@
+<body>
+    <!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" class="p-5 md-50">
+        <img src="assets/images/admin.jpg"> <h1>Admin page</h1>
+        <input type="hidden" name="Id" [value]="objSrv.ppData.BorrowerId">
+        <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-prepend">    
+         <div class="input-group-text bg-white">
+         <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="BorrowerName.valid" [class.red-icon]="BorrowerName.invalid && BorrowerName.touched"></i>
+         <input name="BorrowerName" #BorrowerName="ngModel"[(ngModel)]="objSrv.ppData.BorrowerName" placeholder="Borrower Name" class="form-control" required>    
+        </div>
+        </div>  
+        </div>   
+    </div>
+    <div clas="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user" aria-hidden="true" [class.green-icon]="BorrowerContact.valid" [class.red-icon]="BorrowerContact.invalid && BorrowerContact.touched"></i>
+                    <input name="BorrowerContact" #BorrowerContact="ngModel" [(ngModel)]="objSrv.ppData.BorrowerContact" placeholder="Borrower Contact" class="form-control" required maxlength="10" minlength="10">    
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div clas="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="BorrowerAddress.valid"
+                    [class.red-icon]="BorrowerAddress.invalid && BorrowerAddress.touched"></i>
+                    <input name="BorrowerAddress" #BorrowerAddress="ngModel"   [(ngModel)]="objSrv.ppData.BorrowerAddress" placeholder="Borrower Address" class="form-control" required maxlength="30" minlength="5">    
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div clas="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-key" aria-hidden="true" [class.green-icon]="PropertyNo.valid"
+                    [class.red-icon]="PropertyNo.invalid && PropertyNo.touched"></i>
+                    <input type="number" name="PropertyNo" #PropertyNo="ngModel" [(ngModel)]="objSrv.ppData.PropertyNo" placeholder="PropertyNo" class="form-control" required>    
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button class="btn btn-success btn-lg" type="submit" [disabled]="form.invalid">
+            <i class="fa fa-database"></i>Register/Update Customer
+        </button>
+    </div>
+    </form> -->
+    
+    <table class="table table-hover">
+        <thead class="thead-primary">
+            <tr>
+               <th>BorrowerId</th> 
+                <th>FirstName</th>  
+                <th>LastName</th> 
+                <th>Contact</th>
+                <th>Dob</th>
+                <th>Gender</th>
+                <th>Occupation</th> 
+                <th>Identity Type</th>
+                <th>Identiy Id</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZipCode</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of objSrv.ppList">
+                <td (click)="fillForm(p)">{{p.BorrowerId}}</td>
+                <td (click)="fillForm(p)">{{p.FirstName}}</td>
+                <td (click)="fillForm(p)">{{p.LastName}}</td>
+                <td (click)="fillForm(p)">{{p.Contact}}</td>
+                <td (click)="fillForm(p)">{{p.Dob}}</td>
+                <td (click)="fillForm(p)">{{p.Gender}}</td>
+                <td (click)="fillForm(p)">{{p.Occupation}}</td>
+                <td (click)="fillForm(p)">{{p.IdentityType}}</td>
+                <td (click)="fillForm(p)">{{p.IdentityId}}</td>
+                <td (click)="fillForm(p)">{{p.Address}}</td>
+                <td (click)="fillForm(p)">{{p.City}}</td>
+                <td (click)="fillForm(p)">{{p.State}}</td>
+                <td (click)="fillForm(p)">{{p.ZipCode}}</td>
+                <td><i class="fa fa-trash" (click)="del(p.BorrowerId)"></i></td> 
+    
+            </tr>
+        </tbody>
+        
+    </table>
+    
+</body>

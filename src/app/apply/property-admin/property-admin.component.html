@@ -1,0 +1,99 @@
+
+<body>
+  <div class="testbox">
+      <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <input type="hidden" name="Id" [value]="objSrv.ppData.ApplicantId">
+<fieldset>
+  <legend>Property Information</legend>
+  <br>
+  <div class="item">
+  <label for="LoanType">Loan Type<span>*</span></label>
+  <i class="fa fa-building" aria-hidden="true"></i>
+  <select name="LoanType" #LoanType="ngModel"[(ngModel)]="objSrv.ppData.LoanType" placeholder="Loan Type" class="form-control" required>
+    <option value="" selected="selected" disabled="disabled">--select loan type--</option>
+    <option value="Home Loan">Home Loan</option>
+    <option value="Car Loan">Car Loan</option>
+    <option value="Agriculture Loan">Agriculture Loan</option>
+    <option value="Wedding Loan">Wedding Loan</option>
+    <option value="Vehicle Loan">Vehicle Loan</option>
+    <option value="Business Loan">Business Loan</option>
+    <option value="Education Loan">Education Loan</option>
+    <option value="Personal Loan">Personal Loan</option>
+  </select>       
+  </div>
+  <br>
+
+  <div class="item">
+  <label for="LoanPurpose">Loan Purpose<span>*</span></label>
+  <select  name="LoanPurpose" #LoanPurpose="ngModel"[(ngModel)]="objSrv.ppData.LoanPurpose" placeholder="Loan Purpose" class="form-control" required>
+    <option value="" selected="selected" disabled="disabled">--select loan type--</option>
+    <option value="Home Improvement/ Home remodeling">Home Improvement/ Home remodeling</option>
+    <option value="Emergency purposes">Emergency purposes</option>
+    <option value="Wedding Expenses">Wedding Expenses</option>
+    <option value="Debt consolidation">Debt consolidation</option>
+    <option value="Vehicle financing/ Buying a New Vehicle">Vehicle financing/ Buying a New Vehicle</option>
+    <option value="Studying in abroad/ Higher Education">Studying in abroad/ Higher Education</option>
+    <option value="To Build a Startup">To Build a Startup</option>
+    <option value="To Purchase land or agricultural tools.">To Purchase land or agricultural tools.</option>
+  </select>   
+ </div>
+
+  <br>
+  <div class="item">
+  <label for="RequestAmount">Request Amount<span>*</span></label>
+  <i class="fa fa-money" aria-hidden="true" [class.green-icon]="RequestAmount.valid" [class.red-icon]="RequestAmount.invalid && RequestAmount.touched"></i>
+  <input type="number" name="RequestAmount" #RequestAmount="ngModel"[(ngModel)]="objSrv.ppData.RequestAmount" placeholder="RequestAmount" class="form-control" required>
+  </div>
+  <br>
+  <div class="item">
+  <label for="LoanTenure">Loan Tenure<span>*</span></label>
+  <i class="fa fa-calendar-alt" aria-hidden="true" [class.green-icon]="LoanTenure.valid" [class.red-icon]="LoanTenure.invalid && LoanTenure.touched"></i>
+  <input type="number" name="LoanTenure" #LoanTenure="ngModel"[(ngModel)]="objSrv.ppData.LoanTenure" placeholder="Loan Tenure in months" class="form-control" required>
+  </div>
+  <div class="item">
+    <label for="BorrowerId">Borrower Id<span>*</span></label>
+    <i class="fa fa-calendar-alt" aria-hidden="true" [class.green-icon]="BorrowerId.valid" [class.red-icon]="BorrowerId.invalid && BorrowerId.touched"></i>
+    <input type="number" name="#BorrowerId" #BorrowerId="ngModel"[(ngModel)]="objSrv.ppData.BorrowerId" placeholder="Borrower Id Number" class="form-control" required>
+    </div>
+  <br>
+</fieldset>
+<div class="btn-block">
+  <button class="btn btn-primary btn-lg" type="submit">
+    <i class="fa fa-check-circle-o"></i>Save and Continue
+  </button>
+</div>
+
+<br>
+
+<table class="table table-hover">
+  <thead class="thead-primary">
+      <tr>
+         <th>Applicant Id</th> 
+          <th>Loan Type</th> 
+          <th>Loan Purpose</th>
+          <th>Loan Tenure</th> 
+          <th>Request Amount</th> 
+
+                            
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let p of objSrv.ppList">
+          <td (click)="fillForm(p)">{{p.ApplicantId}}</td>
+          <td (click)="fillForm(p)">{{p.LoanType}}</td>
+          <td (click)="fillForm(p)">{{p.LoanPurpose}}</td>
+          <td (click)="fillForm(p)">{{p.RequestAmount}}</td>  
+          <td (click)="fillForm(p)">{{p.LoanTenure}}</td>  
+        
+                              
+          <td><i class="fa fa-trash" (click)="del(p.ApplicantId)"></i></td> 
+
+      </tr>
+  </tbody>
+  
+</table>
+</form>
+  </div>
+</body>
+
+

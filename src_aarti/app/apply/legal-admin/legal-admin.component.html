@@ -1,0 +1,104 @@
+<body>
+    <div class="textbox">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="Id" [value]="objSrv.ppData.ApplicationNo">
+<fieldset>
+    <legend>Legal Documents</legend>
+    <br>       
+    <div class="item">
+    <label for="PropertyProof">Property Proof - Notarized Sale Agreement<span>*</span></label>
+    <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="PropertyProof.valid" [class.red-icon]="PropertyProof.invalid && PropertyProof.touched"></i>
+    <input name="PropertyProof" #PropertyProof="ngModel" [(ngModel)]="objSrv.ppData.PropertyProof" placeholder="Notarized Sale Agreement" class="form-control" required>
+    <p>Click on the "Choose File" button to upload a file:</p>
+    <input type="file" id="myFile" name="Filename">
+    </div>
+    <br>
+    <div class="item">
+      <label for="BankSalarySlip">BankSalary Slip<span>*</span></label>
+      <i class="fa fa-receipt" aria-hidden="true" [class.green-icon]="BankSalarySlip.valid" [class.red-icon]="BankSalarySlip.invalid && BankSalarySlip.touched"></i>
+      <input name="BankSalarySlip" #BankSalarySlip="ngModel"[(ngModel)]="objSrv.ppData.BankSalarySlip" placeholder="BankSalary Slip" class="form-control" required>
+    <p>Click on the "Choose File" button to upload a file:</p>
+    <input type="file" id="myFile" name="Filename">
+    </div>
+    <br>
+    <div class="item">
+    <label for="AddressProof">Address Proof<span>*</span></label>
+    <select name="AddressProof" #AddressProof="ngModel"[(ngModel)]="objSrv.ppData.AddressProof" placeholder="Address Proof" class="form-control" required>
+      <option value="" selected="selected" disabled="disabled">--select address proof--</option>
+      <option value="Electricity Bill">Electricity Bill</option>
+      <option value="Aadhar Card">Aadhar Card</option>
+      <option value="Ration Card">Bank Passbook</option>
+      <option value="Ration Card">Ration Card</option>
+      <option value="Telephone Bill">Telephone Bill</option>
+    </select> 
+    <p>Click on the "Choose File" button to upload a file:</p>
+    <input type="file" id="myFile" name="Filename">
+    </div>
+    <br>
+    <div class="item">
+      <label for="GuarantorName">Guarantor Name<span>*</span></label>
+      <i class="fa fa-money-bill" aria-hidden="true" [class.green-icon]="GuarantorName.valid" [class.red-icon]="GuarantorName.invalid && GuarantorName.touched"></i>
+      <input name="GuarantorName" #GuarantorName="ngModel"[(ngModel)]="objSrv.ppData.GuarantorName" placeholder="Guarantor Name" class="form-control" required>
+      </div>
+      <br>
+      <div class="item">
+        <label for="GuarantorProofType">Guarantor Proof Type<span>*</span></label>
+        <select name="GuarantorProofType" #GuarantorProofType="ngModel"[(ngModel)]="objSrv.ppData.GuarantorProofType" placeholder="Guarantor Proof Type" class="form-control" required>
+          <option value="" selected="selected" disabled="disabled">--select guarantor proof--</option>
+          <option value="Home Loan">Pan Card</option>
+          <option value="Car Loan">Aadhar Card</option>
+          <option value="Agriculture Loan">Passport No</option>
+          <option value="Wedding Loan">Driving License</option>
+          <option value="Vehicle Loan">Voter Id</option>
+        </select> 
+  
+        </div>
+        <br>
+        <div class="item">
+          <label for="GuarantorProofId">Guarantor Proof Id<span>*</span></label>
+          <i class="fa fa-money-bill" aria-hidden="true" [class.green-icon]="GuarantorProofId.valid" [class.red-icon]="GuarantorProofId.invalid && GuarantorProofId.touched"></i>
+          <input name="GuarantorProofId" #GuarantorProofId="ngModel"[(ngModel)]="objSrv.ppData.GuarantorProofId" placeholder="Guarantor Name" class="form-control" required>
+          <p>Click on the "Choose File" button to upload a file:</p>
+          <input type="file" id="myFile" name="Filename">
+          
+          </div>
+          <br>
+  </fieldset>
+  <div class="btn-block">
+    <button class="btn btn-primary btn-lg" type="submit">
+      <i class="fa fa-send"></i>Create
+    </button>
+  </div>
+
+  <table class="table table-hover">
+    <thead class="thead-primary">
+        <tr>
+           <th>ApplicationNo</th> 
+            <th>Property Proof</th> 
+            <th>Bank Salary Slip</th>
+            <th>Address Proof</th> 
+            <th>Guarantor Name</th>
+            <th>Guarantor ProofType</th> 
+            <th>Guarantor ProofId</th>                              
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of objSrv.ppList">
+            <td (click)="fillForm(p)">{{p.ApplicationNo}}</td>
+            <td (click)="fillForm(p)">{{p.PropertyProof}}</td>
+            <td (click)="fillForm(p)">{{p.BankSalarySlip}}</td>
+            <td (click)="fillForm(p)">{{p.AddressProof}}</td>  
+            <td (click)="fillForm(p)">{{p.GuarantorName}}</td>   
+            <td (click)="fillForm(p)">{{p.GuarantorProofType}}</td>            
+            <td (click)="fillForm(p)">{{p.GuarantorProofId}}</td>            
+         
+                                
+            <td><i class="fa fa-trash" (click)="del(p.ApplicationNo)"></i></td> 
+
+        </tr>
+    </tbody>
+    
+</table>
+</form>
+</div>
+</body>

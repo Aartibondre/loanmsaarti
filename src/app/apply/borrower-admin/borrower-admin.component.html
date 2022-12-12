@@ -1,0 +1,304 @@
+<body>
+    
+    <div class="testbox">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+      <input type="hidden" name="Id" [value]="objSrv.ppData.BorrowerId">
+      
+      <fieldset style="border-radius: 1px; font-size: 30px;">
+            <legend>Borrower Information</legend>
+            <br>
+            <div class="item" >
+              <label for="name">Name<span>*</span></label>
+              <div class="name-item">
+                <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="FirstName.valid" [class.red-icon]="FirstName.invalid && FirstName.touched"></i>
+                <input name="FirstName" #FirstName="ngModel" [(ngModel)]="objSrv.ppData.FirstName" placeholder="First" class="form-control" required>
+                       
+                <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="LastName.valid" [class.red-icon]="LastName.invalid && LastName.touched"></i>
+                <input name="LastName" #LastName="ngModel" [(ngModel)]="objSrv.ppData.LastName" placeholder="Last" class="form-control" required>
+                
+              </div>
+            </div>
+             
+            <div class="item">
+            <label for="address">Contact<span>*</span></label>
+            <i class="fa fa-phone" aria-hidden="true" [class.green-icon]="Contact.valid"
+                [class.red-icon]="Contact.invalid && Contact.touched"></i>
+                <input name="Contact" #Contact="ngModel" [(ngModel)]="objSrv.ppData.Contact" placeholder="Contact" class="form-control" required maxlength="10" minlength="10">
+           </div>
+           <br>
+           <div class="item">
+            <label for="date">Dob<span>*</span></label>
+            <i class="fa fa-calendar-alt" aria-hidden="true" [class.green-icon]="Dob.valid"
+                [class.red-icon]="Dob.invalid && Dob.touched"></i>
+                <input type="date" name="Dob" #Dob="ngModel" [(ngModel)]="objSrv.ppData.Dob" class="form-control" required>
+           </div>
+           <br>
+           <div class="item">
+            <label for="gender"> Gender</label>  
+                <select name="Gender" #Gender="ngModel"   [(ngModel)]="objSrv.ppData.Gender" placeholder="Gender" class="form-control" required>     
+                  <option value="" selected="selected" disabled="disabled">-- select one --</option> 
+                  <option value="male">Male</option>     
+                  <option value="female">Female</option>     
+                  <option value="other">other</option> 
+                </select>
+            </div>
+           <br>
+           <div class="item">
+            <label for="Occupation">Occupation<span>*</span></label>
+                <select name="Occupation" #Occupation="ngModel" [(ngModel)]="objSrv.ppData.Occupation" placeholder="Occupation" class="form-control" required>
+                  <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                  <optgroup label="Healthcare Practitioners and Technical Occupations:">
+                    <option value="Chiropractor">-  Chiropractor</option>
+                    <option value="Dentist">-  Dentist</option>
+                    <option value="Dietitian or Nutritionist">-  Dietitian or Nutritionist</option>
+                    <option value="Optometrist">-  Optometrist</option>
+                    <option value="Pharmacist">-  Pharmacist</option>
+                    <option value="Physician">-  Physician</option>
+                    <option value="Physician">-  Physician Assistant</option>
+                    <option value="Podiatrist">-  Podiatrist</option>
+                    <option value="Registered Nurse">-  Registered Nurse</option>
+                    <option value="Therapist">-  Therapist</option>
+                    <option value="Veterinarian">-  Veterinarian</option>
+                    <option value="Health Technologist or Technician">-  Health Technologist or Technician</option>
+                    <option value="Other Healthcare Practitioners and Technical Occupation">-  Other Healthcare Practitioners and Technical Occupation</option>
+                  </optgroup>
+                  <optgroup label="Healthcare Support Occupations:">
+                    <option value="Nursing, Psychiatric, or Home Health Aide">-  Nursing, Psychiatric, or Home Health Aide</option>
+                    <option value="Occupational and Physical Therapist Assistant or Aide">-  Occupational and Physical Therapist Assistant or Aide</option>
+                    <option value="Other Healthcare Support Occupation">-  Other Healthcare Support Occupation</option>
+                  </optgroup>
+                  <optgroup label="Business, Executive, Management, and Financial Occupations:">
+                    <option value="Chief Executive">-  Chief Executive</option>
+                    <option value="General and Operations Manager">-  General and Operations Manager</option>
+                    <option value="Advertising, Marketing, Promotions, Public Relations, and Sales Manager">-  Advertising, Marketing, Promotions, Public Relations, and Sales Manager</option>
+                    <option value="Operations Specialties Manager (e.g., IT or HR Manager)">-  Operations Specialties Manager (e.g., IT or HR Manager)</option>
+                    <option value="Construction Manager">-  Construction Manager</option>
+                    <option value="Engineering Manager">-  Engineering Manager</option>
+                    <option value="Accountant, Auditor">-  Accountant, Auditor</option>
+                    <option value="Business Operations or Financial Specialist">-  Business Operations or Financial Specialist</option>
+                    <option value="Business Owner">-  Business Owner</option>
+                    <option value="Other Business, Executive, Management, Financial Occupation">-  Other Business, Executive, Management, Financial Occupation</option>
+                  </optgroup>
+                  <optgroup label="Architecture and Engineering Occupations:">
+                    <option value="Architect, Surveyor, or Cartographer">-  Architect, Surveyor, or Cartographer</option>
+                    <option value="Engineer">-  Engineer</option>
+                    <option value="Other Architecture and Engineering Occupation">-  Other Architecture and Engineering Occupation</option>
+                  </optgroup>
+                  <optgroup label="Education, Training, and Library Occupations:">
+                    <option value="Postsecondary Teacher (e.g., College Professor)">-  Postsecondary Teacher (e.g., College Professor)</option>
+                    <option value="Primary, Secondary, or Special Education School Teacher">-  Primary, Secondary, or Special Education School Teacher</option>
+                    <option value="Other Teacher or Instructor">-  Other Teacher or Instructor</option>
+                    <option value="Other Education, Training, and Library Occupation">-  Other Education, Training, and Library Occupation</option>
+                  </optgroup>
+                  <optgroup label="Other Professional Occupations:">
+                    <option value="Arts, Design, Entertainment, Sports, and Media Occupations">-  Arts, Design, Entertainment, Sports, and Media Occupations</option>
+                    <option value="Computer Specialist, Mathematical Science">-  Computer Specialist, Mathematical Science</option>
+                    <option value="Counselor, Social Worker, or Other Community and Social Service Specialist">-  Counselor, Social Worker, or Other Community and Social Service Specialist</option>
+                    <option value="Lawyer, Judge">-  Lawyer, Judge</option>
+                    <option value="Life Scientist">-  Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist)</option>
+                    <option value="Physical Scientist">-  Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist)</option>
+                    <option value="Religious Worker">-  Religious Worker (e.g., Clergy, Director of Religious Activities or Education)</option>
+                    <option value="Social Scientist and Related Worker">-  Social Scientist and Related Worker</option>
+                    <option value="Other Professional Occupation">-  Other Professional Occupation</option>
+                  </optgroup>
+                  <optgroup label="Office and Administrative Support Occupations:">
+                    <option value="Supervisor of Administrative Support Workers">-  Supervisor of Administrative Support Workers</option>
+                    <option value="Financial Clerk">-  Financial Clerk</option>
+                    <option value="Secretary or Administrative Assistant">-  Secretary or Administrative Assistant</option>
+                    <option value="Material Recording, Scheduling, and Dispatching Worker">-  Material Recording, Scheduling, and Dispatching Worker</option>
+                    <option value="Other Office and Administrative Support Occupation">-  Other Office and Administrative Support Occupation</option>
+                  </optgroup>
+                  <optgroup label="Services Occupations:">
+                    <option value="Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)">-  Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)</option>
+                    <option value="Chef or Head Cook">-  Chef or Head Cook</option>
+                    <option value="Cook or Food Preparation Worker">-  Cook or Food Preparation Worker</option>
+                    <option value="Food and Beverage Serving Worker">-  Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress)</option>
+                    <option value="Building and Grounds Cleaning and Maintenance">-  Building and Grounds Cleaning and Maintenance</option>
+                    <option value="Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge)">-  Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge)</option>
+                    <option value="Sales Supervisor, Retail Sales">-  Sales Supervisor, Retail Sales</option>
+                    <option value="Retail Sales Worker">-  Retail Sales Worker</option>
+                    <option value="Insurance Sales Agent">-  Insurance Sales Agent</option>
+                    <option value="Sales Representative">-  Sales Representative</option>
+                    <option value="Real Estate Sales Agent">-  Real Estate Sales Agent</option>
+                    <option value="Other Services Occupation">-  Other Services Occupation</option>
+                  </optgroup>
+                  <optgroup label="Agriculture, Maintenance, Repair, and Skilled Crafts Occupations:">
+                    <option value="Construction and Extraction (e.g., Construction Laborer, Electrician)">-  Construction and Extraction (e.g., Construction Laborer, Electrician)</option>
+                    <option value="Farming, Fishing, and Forestry">-  Farming, Fishing, and Forestry</option>
+                    <option value="Installation, Maintenance, and Repair">-  Installation, Maintenance, and Repair</option>
+                    <option value="Production Occupations">-  Production Occupations</option>
+                    <option value="Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation">-  Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation</option>
+                  </optgroup>
+                  <optgroup label="Transportation Occupations:">
+                    <option value="Aircraft Pilot or Flight Engineer">-  Aircraft Pilot or Flight Engineer</option>
+                    <option value="Motor Vehicle Operator">-  Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver)</option>
+                    <option value="Other Transportation Occupation">-  Other Transportation Occupation</option>
+                  </optgroup>
+                  <optgroup label="Other Occupations:">
+                    <option value="Military">-  Military</option>
+                    <option value="Homemaker">-  Homemaker</option>
+                    <option value="Other Occupation">-  Other Occupation</option>
+                    <option value="Don't Know">-  Don't Know</option>
+                    <option value="Not Applicable">-  Not Applicable</option>
+                  </optgroup>
+                </select>
+          </div>
+          <br>
+           <div class="item">
+            <label for="IdentityType">Identiy Type<span>*</span></label>
+            
+                <select name="IdentityType" #IdentityType="ngModel" [(ngModel)]="objSrv.ppData.IdentityType" placeholder="Pan Card No" class="form-control">
+                  <option value="" selected="selected" disabled="disabled">--select identity type--</option>
+                  <option value="Home Loan">Pan Card</option>
+                  <option value="Car Loan">Aadhar Card</option>
+                  <option value="Agriculture Loan">Passport No</option>
+                  <option value="Wedding Loan">Driving License</option>
+                  <option value="Vehicle Loan">Voter Id</option>
+                </select>
+           </div>
+           <br>
+           <div class="item">
+            <label for="IdentityId">Identity Id<span>*</span></label>
+                <input name="IdentityId" #IdentityId="ngModel" [(ngModel)]="objSrv.ppData.IdentityId" placeholder="Enter selected Identity Id" class="form-control" required>
+           </div>
+           <br>
+           <div class="item">
+            <label for="Address">Address<span>*</span></label>
+            <i class="fa fa-address-book" aria-hidden="true" [class.green-icon]="Address.valid"
+                [class.red-icon]="Address.invalid && Address.touched"></i>
+                <input name="Address" #Address="ngModel" [(ngModel)]="objSrv.ppData.Address" placeholder="Address" class="form-control" required>
+           </div>
+           <br>
+           <div class="item">
+            <div class="name-item">
+              <div>
+                <label for="City">City<span>*</span></label>
+                <i aria-hidden="true" [class.green-icon]="City.valid"
+                [class.red-icon]="City.invalid && City.touched"></i>
+                <input name="City" #City="ngModel" [(ngModel)]="objSrv.ppData.City" placeholder="City" class="form-control" required>
+          
+              </div>
+              <br>
+              <div>
+                <label for="State">State<span>*</span></label>
+                <i aria-hidden="true" [class.green-icon]="State.valid"
+                [class.red-icon]="State.invalid && State.touched"></i>
+                <select name="State" #State="ngModel" [(ngModel)]="objSrv.ppData.State" placeholder="State" class="form-control">
+                  <option value="" selected="selected" disabled="disabled">--Select State--</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                  <option value="Daman and Diu">Daman and Diu</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                  </select>
+              </div>
+            </div>
+            <br>
+            <div class="item">
+              <div class="name-item">
+                <div>
+                  <label for="ZipCode">Zip Code<span>*</span></label>
+                  <i aria-hidden="true" [class.green-icon]="ZipCode.valid"
+                [class.red-icon]="ZipCode.invalid && ZipCode.touched"></i>
+                  <input name="ZipCode" #ZipCode="ngModel" [(ngModel)]="objSrv.ppData.ZipCode" placeholder="ZipCode" class="form-control" required />
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="name-item">
+                <div>
+                  <label for="Status">Status<span>*</span></label>
+                  <i aria-hidden="true" [class.green-icon]="Status.valid"
+                [class.red-icon]="Status.invalid && Status.touched"></i>
+                  <input name="Status" #Status="ngModel" [(ngModel)]="objSrv.ppData.Status" placeholder="Status" class="form-control" required />
+                </div>
+              </div>
+            </div>
+            
+           </div>
+        </fieldset>
+        <br>
+        <div class="btn-block">
+          <button class="btn btn-primary btn-lg" type="submit">
+            <i class="fa fa-check-circle-o"></i>Create
+        </button>
+      </div>
+      <br>
+      </form>
+    </div>
+      <br>
+
+        <table class="table table-hover">
+            <thead class="thead-primary">
+                <tr>
+                   <th>BorrowerId</th> 
+                    <th>First Name</th> 
+                    <th>Last Name</th>
+                    <th>Contact</th> 
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Occupation</th>
+                    <th>Identity Type</th>
+                    <th>Identity Id</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZipCode</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of objSrv.ppList">
+                    <td (click)="fillForm(p)">{{p.BorrowerId}}</td>
+                    <td (click)="fillForm(p)">{{p.FirstName}}</td>
+                    <td (click)="fillForm(p)">{{p.LastName}}</td>
+                    <td (click)="fillForm(p)">{{p.Contact}}</td>  
+                    <td (click)="fillForm(p)">{{p.Dob}}</td>            
+                    <td (click)="fillForm(p)">{{p.Gender}}</td>            
+                    <td (click)="fillForm(p)">{{p.Occupation}}</td>            
+                    <td (click)="fillForm(p)">{{p.IdentityType}}</td>            
+                    <td (click)="fillForm(p)">{{p.IdentityId}}</td>  
+                    <td (click)="fillForm(p)">{{p.Address}}</td>            
+                    <td (click)="fillForm(p)">{{p.City}}</td>            
+                    <td (click)="fillForm(p)">{{p.State}}</td> 
+                    <td (click)="fillForm(p)">{{p.ZipCode}}</td> 
+                    <td (click)="fillForm(p)">{{p.Status}}</td> 
+                    <td><i class="fa fa-trash" (click)="del(p.BorrowerId)"></i></td> 
+        
+                </tr>
+            </tbody>
+            
+        </table>
+    </body>    
+         

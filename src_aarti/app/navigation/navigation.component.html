@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/"></a>
+    <img src="https://th.bing.com/th/id/OIP.9it56Lwd1yfOFMyLQGp0UgHaF_?w=226&h=182&c=7&r=0&o=5&dpr=1.5&pid=1.7" class="center">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active text-black" aria-current="page" routerLink="">Home</a>
+        
+     
+          <a class="nav-link text-black" routerLink="/adminexpenses">Admin Login</a>
+          <!-- <a class="nav-link text-black" routerLink="/conAdmin">Contact Admin</a>
+     -->
+        
+        <a class="nav-link text-black" routerLink="home/register"> User Login</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-black" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/about">About Us</a></li>
+            <li><a class="dropdown-item" routerLink="/contact">Contact Us</a></li>
+            <li><a class="dropdown-item" routerLink="/service">Services</a></li>
+            <!-- <li> <a class="dropdown-item" routerLink="/apply">Apply</a></li> -->
+          </ul>
+        </li>
+         
+        <!-- <a class="nav-link text-black" routerLink="/expenses">Apply</a>
+        <a class="nav-link text-black" routerLink="ContactAdmin">ContactAdmin</a>
+        <a class="nav-link text-black" routerLink="BorrowerAdmin">BorrowerAdmin</a> 
+        <a class="nav-link text-black" routerLink="PropertyAdmin">PropertyAdmin</a>
+        <a class="nav-link text-black" routerLink="LegalAdmin">LegalAdmin</a>  -->
+        <a class="nav-link text-black" routerLink="dashboard">Dashboard</a>
+
+       <li class="nav-item">
+        
+          <div *ngIf="isUserLoggedIn; else isLogOut">
+                <a class="nav-link" routerLink="/logout">Logout</a>
+          </div>
+
+          <ng-template #isLogOut>
+              <a class="nav-link" routerLink="/login">Login</a>
+          </ng-template>
+       </li>
+               
+      </div>
+    </div>
+  </div>
+</nav>
